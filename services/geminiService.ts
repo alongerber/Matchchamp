@@ -45,7 +45,7 @@ export const initializeChat = async (userName?: string, gender?: string): Promis
     }
 
     chatSession = client.chats.create({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3-pro-preview',
         config: {
             systemInstruction: instruction,
             temperature: 0.7,
