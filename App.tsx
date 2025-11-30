@@ -30,7 +30,7 @@ const App: React.FC = () => {
         setMessages([
             {
                 id: uuidv4(),
-                text: "היי! ברוכים הבאים ל-Tutor-X: גאון החשבון! 🤖\nאני אעזור לכם להתכונן למבחן מחר.\n\nאיך קוראים לך?",
+                text: "היי! ברוכים הבאים ל-גאון החשבון! 🤖\nאני אעזור לכם להתכונן למבחן מחר.\n\nאיך קוראים לך?",
                 sender: Sender.Bot,
                 timestamp: new Date()
             }
@@ -51,7 +51,7 @@ const App: React.FC = () => {
     const lowerText = text.toLowerCase();
     if (lowerText.includes('לימוד') || lowerText.includes('ללמוד') || lowerText.includes('חדש')) return 'learning';
     if (lowerText.includes('תרגול') || lowerText.includes('לתרגל')) return 'practice';
-    if (lowerText.includes('מבחן') || lowerText.includes('סימולציה')) return 'test';
+    if (lowerText.includes('מבחן') || lowerText.includes('סימולציה') || lowerText.includes('תבחן')) return 'test';
     return null;
   };
 
@@ -103,7 +103,7 @@ const App: React.FC = () => {
             setTimeout(() => {
                 const botMsg: Message = {
                     id: uuidv4(),
-                    text: `מעולה! הכל מוכן.\nאז מה בא לך לעשות היום?\n\n🧠 **לימוד** - הסברים שווים\n💪 **תרגול** - שאלות לחימום\n🏆 **מבחן** - סימולציה מלאה!`,
+                    text: `מעולה! הכל מוכן.\nאז מה בא לך לעשות היום?\n\n🧠 **לימוד** - נבין הכל לעומק\n💪 **תרגול** - נחזק את השריר\n🏆 **מבחן** - סימולציה למבחן`,
                     sender: Sender.Bot,
                     timestamp: new Date()
                 };
@@ -180,7 +180,7 @@ const App: React.FC = () => {
          setMessages([
             {
                 id: uuidv4(),
-                text: "היי! ברוכים הבאים ל-Tutor-X: גאון החשבון! 🤖\nאני אעזור לכם להתכונן למבחן מחר.\n\nאיך קוראים לך?",
+                text: "היי! ברוכים הבאים ל-גאון החשבון! 🤖\nאני אעזור לכם להתכונן למבחן מחר.\n\nאיך קוראים לך?",
                 sender: Sender.Bot,
                 timestamp: new Date()
             }
@@ -274,9 +274,9 @@ const App: React.FC = () => {
       </main>
 
       {/* Input Area */}
-      <div className="bg-white/80 backdrop-blur-md border-t border-slate-200">
+      <div className="glass-effect border-t border-slate-200 shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
          <div className="max-w-4xl mx-auto">
-             <div className="pt-2 px-4">
+             <div className="pt-3 px-4">
                 <QuickActions 
                     mode={mode} 
                     step={step} 

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Lightbulb, HelpCircle, Check, ArrowRight, User, GraduationCap, Play, PieChart, Shapes, Calculator, Binary, Menu } from 'lucide-react';
+import { Lightbulb, HelpCircle, Check, ArrowRight, User, GraduationCap, Play, PieChart, Shapes, Calculator, Binary, Menu, SkipForward } from 'lucide-react';
 import { AppMode } from '../types';
 
 interface QuickActionsProps {
@@ -36,7 +36,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ mode, step, onAction, onCha
           <>
             <ActionButton onClick={() => onAction("נושא: שברים")} color="purple" icon={<PieChart size={16}/>}>🍕 שברים</ActionButton>
             <ActionButton onClick={() => onAction("נושא: גיאומטריה")} color="emerald" icon={<Shapes size={16}/>}>📐 גיאומטריה</ActionButton>
-            <ActionButton onClick={() => onAction("נושא: מספרים גדולים")} color="blue" icon={<Binary size={16}/>}>💯 מספרים עד 100 אלף</ActionButton>
+            <ActionButton onClick={() => onAction("נושא: מספרים גדולים")} color="blue" icon={<Binary size={16}/>}>💯 מספרים גדולים</ActionButton>
             <ActionButton onClick={() => onAction("נושא: חיבור וחיסור")} color="yellow" icon={<Calculator size={16}/>}>➕ חיבור וחיסור</ActionButton>
           </>
         );
@@ -47,19 +47,28 @@ const QuickActions: React.FC<QuickActionsProps> = ({ mode, step, onAction, onCha
              <>
               <ActionButton onClick={() => onAction("לא הבנתי, תסביר שוב")} color="slate" icon={<HelpCircle size={16}/>}>לא הבנתי</ActionButton>
               <ActionButton onClick={() => onAction("תן לי דוגמה")} color="indigo" icon={<Lightbulb size={16}/>}>תן דוגמה</ActionButton>
-              <ActionButton onClick={() => onAction("הבנתי, בוא נמשיך")} color="emerald" icon={<ArrowRight size={16}/>}>הבנתי!</ActionButton>
+              <ActionButton onClick={() => onAction("הבנתי, בוא נמשיך")} color="emerald" icon={<ArrowRight size={16}/>}>הבנתי, בוא נמשיך</ActionButton>
               <div className="w-full md:w-auto border-l md:border-l-0 border-slate-300 mx-1"></div>
               <ActionButton onClick={onChangeTopic} color="slate" icon={<Menu size={16}/>}>החלף נושא</ActionButton>
             </>
           );
         }
-        if (mode === 'practice' || mode === 'test') {
+        if (mode === 'practice') {
             return (
                <>
-                <ActionButton onClick={() => onAction("תן לי רמז קטן")} color="yellow" icon={<Lightbulb size={16}/>}>רמז?</ActionButton>
+                <ActionButton onClick={() => onAction("תן לי רמז קטן")} color="yellow" icon={<Lightbulb size={16}/>}>תן רמז</ActionButton>
                 <ActionButton onClick={() => onAction("אני לא יודע, תגלה לי")} color="slate" icon={<HelpCircle size={16}/>}>לא יודע</ActionButton>
                 <div className="w-full md:w-auto border-l md:border-l-0 border-slate-300 mx-1"></div>
                 <ActionButton onClick={onChangeTopic} color="slate" icon={<Menu size={16}/>}>החלף נושא</ActionButton>
+              </>
+            );
+        }
+        if (mode === 'test') {
+             return (
+               <>
+                <ActionButton onClick={() => onAction("אני לא יודע, תעבור הלאה")} color="slate" icon={<SkipForward size={16}/>}>דלג על שאלה</ActionButton>
+                <div className="w-full md:w-auto border-l md:border-l-0 border-slate-300 mx-1"></div>
+                <ActionButton onClick={onChangeTopic} color="slate" icon={<Menu size={16}/>}>צא מהמבחן</ActionButton>
               </>
             );
         }
@@ -94,7 +103,7 @@ const ActionButton: React.FC<{ onClick: () => void, children: React.ReactNode, c
         <button 
             onClick={onClick}
             className={`
-                flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-xs md:text-sm transition-all transform hover:scale-105 active:scale-95 border shadow-sm
+                flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-sm transition-all transform hover:scale-105 active:scale-95 border shadow-sm
                 ${colorClasses[color] || colorClasses.slate}
             `}
         >
